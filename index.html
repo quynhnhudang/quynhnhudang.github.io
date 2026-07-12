@@ -4,38 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quynh Nhu Dang | Software Engineer</title>
-    <!-- Import Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base & Theme Styles */
         :root {
             --primary-color: #F8B3C3;
             --primary-dark: #e89eb0;
+            --primary-transparent: rgba(248, 179, 195, 0.15);
             --secondary-color: #333333; 
             --accent-color: #D6A4B8; 
             --bg-color: #FAFCFF; 
+            --bg-gradient-1: #ffffff;
+            --bg-gradient-2: #fff0f3;
             --text-color: #4A4A4A;
             --heading-color: #2C2C2C;
-            --card-bg: #FFFFFF;
+            --card-bg: rgba(255, 255, 255, 0.7);
             --nav-bg: rgba(255, 255, 255, 0.85);
-            --border-color: #EAEAEA;
-            --shadow-color: rgba(0, 0, 0, 0.06);
+            --border-color: rgba(255, 255, 255, 0.4);
+            --shadow-color: rgba(0, 0, 0, 0.05);
         }
 
         [data-theme="dark"] {
             --primary-color: #F8B3C3;
             --primary-dark: #D6A4B8;
+            --primary-transparent: rgba(248, 179, 195, 0.1);
             --secondary-color: #F4F4F4; 
             --accent-color: #e89eb0; 
-            --bg-color: #121212; 
+            --bg-color: #0f0f0f; 
+            --bg-gradient-1: #1a1a1a;
+            --bg-gradient-2: #2a1b20;
             --text-color: #B0B0B0;
             --heading-color: #E0E0E0;
-            --card-bg: #1E1E1E;
-            --nav-bg: rgba(30, 30, 30, 0.85);
-            --border-color: #333333;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --nav-bg: rgba(20, 20, 20, 0.85);
+            --border-color: rgba(255, 255, 255, 0.05);
             --shadow-color: rgba(0, 0, 0, 0.3);
         }
         
+        * {
+            cursor: none; /* Hide default cursor for custom cursor */
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -46,8 +55,44 @@
             padding: 0; 
             color: var(--text-color); 
             line-height: 1.7; 
-            background-color: var(--bg-color);
+            background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-1));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-color);
+            transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+        }
+        .cursor-outline.hover {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-transparent);
+            border-color: transparent;
         }
 
         h1, h2, h3, h4 {
@@ -57,62 +102,65 @@
 
         /* Header & Logo */
         header { 
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: #fff; 
-            padding: 6rem 2rem; 
+            color: var(--heading-color); 
+            padding: 8rem 2rem 6rem; 
             text-align: center; 
             position: relative;
         }
         
         .profile-logo {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 10px 30px var(--primary-transparent);
             margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             background-color: #fff;
         }
 
         .profile-logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(5deg);
         }
 
         header h1 { 
             margin: 0; 
             font-size: 3.5rem; 
-            letter-spacing: -0.5px;
-            color: #fff;
+            letter-spacing: -1px;
             font-weight: 700;
         }
         
-        header p { 
-            margin: 0.5rem 0 0; 
-            font-size: 1.3rem; 
-            font-weight: 400; 
-            color: rgba(255, 255, 255, 0.9);
+        /* Typing Effect Container */
+        .typewriter {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+            min-height: 2.1rem;
         }
+        .cursor-blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* Navigation */
         nav { 
             background: var(--nav-bg); 
-            backdrop-filter: blur(12px); /* Glassmorphism effect */
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             text-align: center; 
             padding: 1rem 0; 
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.4s ease;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             gap: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
         
         nav a { 
@@ -120,13 +168,20 @@
             text-decoration: none; 
             font-weight: 500; 
             font-size: 1rem;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: color 0.3s ease;
+            position: relative;
         }
         
-        nav a:hover { 
-            color: var(--primary-color); 
-            transform: translateY(-2px);
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
         }
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--primary-color); }
 
         .theme-btn {
             background: var(--heading-color);
@@ -134,46 +189,41 @@
             border: none;
             padding: 0.5rem 1.2rem;
             border-radius: 25px;
-            cursor: pointer;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s ease;
         }
-
         .theme-btn:hover {
             background: var(--primary-color);
             color: #fff;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--primary-transparent);
         }
 
         /* Layout & Sections */
         .container { 
-            max-width: 900px; 
+            max-width: 1000px; 
             margin: auto; 
             padding: 4rem 2rem; 
-            overflow: hidden;
         }
         
-        section { 
-            margin-bottom: 5rem; 
-        }
+        section { margin-bottom: 6rem; }
         
         h2 { 
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 0.5rem; 
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-top: 0;
-            margin-bottom: 2rem;
-            display: inline-block;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Scroll Reveal Animation */
+        /* Scroll Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -183,221 +233,232 @@
         .skills { 
             display: flex; 
             flex-wrap: wrap; 
-            gap: 1rem; 
+            gap: 1.2rem; 
         }
         
         .skill-tag { 
             background: var(--card-bg);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            padding: 0.6rem 1.4rem; 
+            backdrop-filter: blur(10px);
+            color: var(--heading-color);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1.6rem; 
             border-radius: 30px; 
             font-weight: 500; 
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
-
         .skill-tag:hover {
             background: var(--primary-color);
             color: #FFF;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(248, 179, 195, 0.3);
+            border-color: var(--primary-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px var(--primary-transparent);
         }
 
-        /* Cards */
+        /* 3D Tilt Cards */
         .grid-container { 
             display: grid; 
             grid-template-columns: 1fr; 
-            gap: 2rem; 
+            gap: 2.5rem; 
         }
         
         .card { 
             background: var(--card-bg); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            padding: 2.5rem; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: border-color 0.4s ease;
+        }
+        
+        .card-content {
+            transform: translateZ(30px); /* Pushes text forward in 3D space */
         }
         
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px var(--shadow-color);
-            border-color: var(--primary-color);
+            border-color: var(--primary-transparent);
         }
         
         .card h3 {
             margin-top: 0;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             color: var(--primary-color);
-            font-size: 1.4rem;
+            font-size: 1.6rem;
         }
-
         .card h4 {
-            margin: 0 0 1.2rem 0;
+            margin: 0 0 1.5rem 0;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.1rem;
             opacity: 0.8;
         }
-
-        ul {
-            margin: 0;
-            padding-left: 1.2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
+        ul { margin: 0; padding-left: 1.2rem; }
+        li { margin-bottom: 0.8rem; }
 
         /* Contact Section Details */
         #contact {
             background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            backdrop-filter: blur(16px);
+            padding: 4rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px var(--shadow-color);
             text-align: center;
         }
-
-        #contact p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        #contact strong {
-            color: var(--primary-color);
-        }
-        
+        #contact p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+        #contact strong { color: var(--primary-color); }
         #contact a {
             color: var(--heading-color);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
         }
-
-        #contact a:hover {
-            color: var(--primary-color);
+        #contact a::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 2px;
+            bottom: -2px; left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
         }
+        #contact a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        #contact a:hover { color: var(--primary-color); }
 
-        /* Footer */
         footer { 
-            background: var(--nav-bg); 
-            color: var(--text-color);
             text-align: center; 
-            padding: 2.5rem 0; 
-            border-top: 1px solid var(--border-color);
-            transition: background-color 0.4s ease;
+            padding: 3rem 0; 
             font-size: 0.9rem;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
 
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <header>
         <img src="image_58a85e.jpg" alt="Quynh Nhu Dang - Profile Art" class="profile-logo">
         <h1>Quynh Nhu Dang</h1>
-        <p>Software Engineer</p>
+        <div class="typewriter"><span id="type-text"></span><span class="cursor-blink">|</span></div>
     </header>
 
     <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <button id="theme-toggle" class="theme-btn">🌓 Theme</button>
+        <a href="#about" class="hover-target">About</a>
+        <a href="#skills" class="hover-target">Skills</a>
+        <a href="#experience" class="hover-target">Experience</a>
+        <a href="#projects" class="hover-target">Projects</a>
+        <a href="#contact" class="hover-target">Contact</a>
+        <button id="theme-toggle" class="theme-btn hover-target">🌓 Theme</button>
     </nav>
 
     <div class="container">
-        <!-- About Section -->
         <section id="about" class="reveal">
             <h2>Summary</h2>
             <p>Full Stack Software Engineer with a B.S. in Computer Science (3.98 GPA) and hands-on experience building APIs, automating CI/CD, and integrating AI across robotics, healthcare, and security. Versatile from React/TypeScript frontends to Python and C++ backends, seeking to bring full-stack ownership and a rapid-iteration mindset.</p>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills" class="reveal">
             <h2>Technical Skills</h2>
             <div class="skills">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">React.js</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">PyTorch</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Git</span>
+                <span class="skill-tag hover-target">Python</span>
+                <span class="skill-tag hover-target">C++</span>
+                <span class="skill-tag hover-target">Java</span>
+                <span class="skill-tag hover-target">React.js</span>
+                <span class="skill-tag hover-target">TypeScript</span>
+                <span class="skill-tag hover-target">SQL</span>
+                <span class="skill-tag hover-target">TensorFlow</span>
+                <span class="skill-tag hover-target">PyTorch</span>
+                <span class="skill-tag hover-target">Docker</span>
+                <span class="skill-tag hover-target">AWS</span>
+                <span class="skill-tag hover-target">Git</span>
             </div>
             <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.95rem;"><strong>Certifications:</strong> CompTIA Security+, CompTIA PenTest+, Scrum.org Professional Scrum Developer I (PSD I), AWS Cloud Practitioner, AWS AI Practitioner, Microsoft Azure AI Fundamentals</p>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience" class="reveal">
             <h2>Work Experience</h2>
             <div class="grid-container">
-                <div class="card reveal">
-                    <h3>Medtronic</h3>
-                    <h4>R&D Software Engineering Intern | 06/2025 - 08/2025</h4>
-                    <ul>
-                        <li>Optimized the Hugo RAS robotic arm control algorithms using C++, achieving a 15% reduction in command response latency and improving the stability of surgical tool movements under load, which was validated through internal simulation tests.</li>
-                        <li>Architected and trained an AI-powered CI/CD-ready tool in Python, integrating GitLab and Medtronic GPT to automate merge request reviews, delivering a functional prototype poised to reduce initial manual review effort by an estimated 25-40% and establishing a new capability for automated code quality assurance.</li>
-                    </ul>
+                <div class="card hover-target">
+                    <div class="card-content">
+                        <h3>Medtronic</h3>
+                        <h4>R&D Software Engineering Intern | 06/2025 - 08/2025</h4>
+                        <ul>
+                            <li>Optimized the Hugo RAS robotic arm control algorithms using C++, achieving a 15% reduction in command response latency and improving the stability of surgical tool movements under load, which was validated through internal simulation tests.</li>
+                            <li>Architected and trained an AI-powered CI/CD-ready tool in Python, integrating GitLab and Medtronic GPT to automate merge request reviews, delivering a functional prototype poised to reduce initial manual review effort by an estimated 25-40% and establishing a new capability for automated code quality assurance.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3>Moffitt Cancer Center</h3>
-                    <h4>Undergraduate Research Assistant | 09/2024 - 05/2025</h4>
-                    <ul>
-                        <li>Developed a custom, multi-step bioinformatics pipeline in R to automate and standardize complex analyses for systems immuno-oncology.</li>
-                        <li>Automated analysis enabled the identification of conserved inflammatory and senescence-associated response pathways across varying radiation doses and time points.</li>
-                    </ul>
+                <div class="card hover-target">
+                    <div class="card-content">
+                        <h3>Moffitt Cancer Center</h3>
+                        <h4>Undergraduate Research Assistant | 09/2024 - 05/2025</h4>
+                        <ul>
+                            <li>Developed a custom, multi-step bioinformatics pipeline in R to automate and standardize complex analyses for systems immuno-oncology.</li>
+                            <li>Automated analysis enabled the identification of conserved inflammatory and senescence-associated response pathways across varying radiation doses and time points.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3>Millennium Corporation</h3>
-                    <h4>Cybersecurity Engineering Intern | 06/2024 - 08/2024</h4>
-                    <ul>
-                        <li>Collaborated with a team of 12 senior cybersecurity analysts to implement advanced penetration testing and red teaming methodologies, identifying and mitigating over 150 critical system vulnerabilities, which reduced the overall system risk profile.</li>
-                        <li>Utilized tools such as Nmap, Metasploit, and Impacket Python scripts for in-depth reconnaissance, vulnerability assessments, and exploitation activities, increasing threat detection accuracy by 60%.</li>
-                    </ul>
+                <div class="card hover-target">
+                    <div class="card-content">
+                        <h3>Millennium Corporation</h3>
+                        <h4>Cybersecurity Engineering Intern | 06/2024 - 08/2024</h4>
+                        <ul>
+                            <li>Collaborated with a team of 12 senior cybersecurity analysts to implement advanced penetration testing and red teaming methodologies, identifying and mitigating over 150 critical system vulnerabilities, which reduced the overall system risk profile.</li>
+                            <li>Utilized tools such as Nmap, Metasploit, and Impacket Python scripts for in-depth reconnaissance, vulnerability assessments, and exploitation activities, increasing threat detection accuracy by 60%.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3>Ombra</h3>
-                    <h4>Software Engineering Intern | 08/2023 - 01/2024</h4>
-                    <ul>
-                        <li>Directed the full-stack development of an Android biometric fingerprint application using MediaPipe and OpenCV, enhancing fingerprint detection accuracy by 15% and securing two government contracts totaling $350K.</li>
-                        <li>Optimized an SQL database to improve data retrieval speed by 30%, significantly enhancing the application's user experience and contributing to a 20% increase in user engagement.</li>
-                    </ul>
+                <div class="card hover-target">
+                    <div class="card-content">
+                        <h3>Ombra</h3>
+                        <h4>Software Engineering Intern | 08/2023 - 01/2024</h4>
+                        <ul>
+                            <li>Directed the full-stack development of an Android biometric fingerprint application using MediaPipe and OpenCV, enhancing fingerprint detection accuracy by 15% and securing two government contracts totaling $350K.</li>
+                            <li>Optimized an SQL database to improve data retrieval speed by 30%, significantly enhancing the application's user experience and contributing to a 20% increase in user engagement.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="reveal">
             <h2>Featured Projects</h2>
             <div class="grid-container">
-                <div class="card reveal">
-                    <h3>NeuroSenseIQ</h3>
-                    <h4>C++, Python, Tensorflow, React.js</h4>
-                    <p>Designed a time-series neural network to analyze pre-processed signals from a simulated patient interface, reducing the time-to-warning for potential nerve fatigue by 30% and improving the detection of subtle anomalies over traditional threshold-based systems by 15%.</p>
+                <div class="card hover-target">
+                    <div class="card-content">
+                        <h3>NeuroSenseIQ</h3>
+                        <h4>C++, Python, Tensorflow, React.js</h4>
+                        <p>Designed a time-series neural network to analyze pre-processed signals from a simulated patient interface, reducing the time-to-warning for potential nerve fatigue by 30% and improving the detection of subtle anomalies over traditional threshold-based systems by 15%.</p>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3>ARQuest: Realm Seekers</h3>
-                    <h4>Java, ARCore, Sceneform, Blender</h4>
-                    <p>Developed an immersive augmented reality (AR) game that combines virtual elements with the real world, allowing players to interact with and capture hidden virtual objects in their physical surroundings.</p>
+                <div class="card hover-target">
+                    <div class="card-content">
+                        <h3>ARQuest: Realm Seekers</h3>
+                        <h4>Java, ARCore, Sceneform, Blender</h4>
+                        <p>Developed an immersive augmented reality (AR) game that combines virtual elements with the real world, allowing players to interact with and capture hidden virtual objects in their physical surroundings.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="reveal">
             <h2>Let's Connect</h2>
             <p>I am currently exploring new opportunities in software and ML/AI engineering. Feel free to reach out!</p>
             <p><strong>Location:</strong> Tampa, FL</p>
-            <p><strong>Email:</strong> <a href="mailto:qndang10@gmail.com">qndang10@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/quynh-nhu-dang/" target="_blank">linkedin.com/in/quynh-nhu-dang</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/quynhnhudang" target="_blank">github.com/quynhnhudang</a></p>
+            <p><strong>Email:</strong> <a href="mailto:qndang10@gmail.com" class="hover-target">qndang10@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/quynh-nhu-dang/" target="_blank" class="hover-target">linkedin.com/in/quynh-nhu-dang</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/quynhnhudang" target="_blank" class="hover-target">github.com/quynhnhudang</a></p>
         </section>
     </div>
 
@@ -407,36 +468,117 @@
 
     <!-- Interactive Scripts -->
     <script>
-        // Dark Mode Toggle Logic
+        // 1. Theme Toggle
         const toggleBtn = document.getElementById('theme-toggle');
         const currentTheme = localStorage.getItem('theme') || 'light';
-        
         document.documentElement.setAttribute('data-theme', currentTheme);
 
         toggleBtn.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             let newTheme = theme === 'dark' ? 'light' : 'dark';
-            
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         });
 
-        // Scroll Reveal Logic
+        // 2. Scroll Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
         }
-
         window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
+        reveal();
+
+        // 3. Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const hoverTargets = document.querySelectorAll('.hover-target, a, button');
+
+        window.addEventListener('mousemove', function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Add a slight delay to the outline for a fluid feel
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                cursorOutline.classList.add('hover');
+            });
+            target.addEventListener('mouseleave', () => {
+                cursorOutline.classList.remove('hover');
+            });
+        });
+
+        // 4. 3D Tilt Effect on Cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // 5. Typing Animation
+        const roles = ["Software Engineer", "Full Stack Developer", "AI & Machine Learning"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeTextElement = document.getElementById("type-text");
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                typeTextElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500; // Pause before typing next word
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        
+        // Start typing effect
+        setTimeout(typeEffect, 1000);
+
     </script>
 </body>
 </html>
