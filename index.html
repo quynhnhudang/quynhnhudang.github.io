@@ -1,3 +1,8 @@
+Here is the updated code for your portfolio website. It incorporates the professional summary, education, technical skills, top experiences, and projects from your resume and CV, while maintaining the pink color theme and your specific contact links.
+
+I have curated the experience and project sections to highlight your most impactful software engineering roles.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +14,9 @@
         :root {
             /* theme color from image_5833e3.png */
             --primary-color: #F8B3C3;
-            --secondary-color: #333333; /* For better contrast and readability */
-            --accent-color: #D6A4B8; /* A coordinating accent pink for deeper elements */
-            --bg-color: #FFFFFF; /* Brighter background to pop the pink theme */
+            --secondary-color: #333333; 
+            --accent-color: #D6A4B8; 
+            --bg-color: #FFFFFF; 
             --text-color: #333;
         }
         
@@ -47,7 +52,7 @@
         }
 
         nav { 
-            background: #FAFAFA; /* Light nav bar to complement the primary header color */
+            background: #FAFAFA; 
             text-align: center; 
             padding: 1rem 0; 
             position: sticky;
@@ -108,15 +113,15 @@
             font-size: 0.9rem;
         }
 
-        /* Projects Grid */
-        .projects { 
+        /* Cards for Experience and Projects */
+        .grid-container { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
             margin-top: 1.5rem;
         }
         
-        .project-card { 
+        .card { 
             background: #fff; 
             border: 1px solid #eaeaea; 
             padding: 1.5rem; 
@@ -124,15 +129,27 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
+        .card:hover {
+            transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0,0,0,0.05);
             border-color: var(--primary-color);
         }
         
-        .project-card h3 {
+        .card h3 {
             margin-top: 0;
+            margin-bottom: 0.5rem;
             color: var(--primary-color);
+        }
+
+        .card h4 {
+            margin: 0 0 1rem 0;
+            font-weight: 400;
+            color: #666;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 1.5rem;
         }
 
         /* Contact Section Details */
@@ -166,6 +183,7 @@
     <nav>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -173,36 +191,81 @@
     <div class="container">
         <!-- About Section -->
         <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I am a Tampa-based Software Engineer with a B.S. in Computer Science and a B.A. in Mathematics from the University of South Florida. I enjoy bridging the gap between rigorous mathematical concepts and practical software development, with hands-on experience in machine learning, cybersecurity, and full-stack engineering.</p>
+            <h2>Summary</h2>
+            <p>Full Stack Software Engineer with a B.S. in Computer Science (3.98 GPA) and hands-on experience building APIs, automating CI/CD, and integrating AI across robotics, healthcare, and security.[cite: 1] Versatile from React/TypeScript frontends to Python and C++ backends, seeking to bring full-stack ownership and a rapid-iteration mindset.[cite: 1]</p>
         </section>
 
         <!-- Skills Section -->
         <section id="skills">
             <h2>Technical Skills</h2>
             <div class="skills">
-                <span class="skill-tag">Software Engineering</span>
-                <span class="skill-tag">Machine Learning & AI</span>
                 <span class="skill-tag">Python</span>
-                <span class="skill-tag">Data Engineering</span>
-                <span class="skill-tag">Cybersecurity</span>
-                <span class="skill-tag">Mathematical Modeling</span>
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">Git/Version Control</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Git</span>
+            </div>
+            <p style="margin-top: 1.5rem; color: #666;"><strong>Certifications:</strong> CompTIA Security+, CompTIA PenTest+, Scrum.org Professional Scrum Developer I (PSD I), AWS Cloud Practitioner, AWS AI Practitioner, Microsoft Azure AI Fundamentals[cite: 1, 2]</p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Medtronic</h3>
+                    <h4>R&D Software Engineering Intern | 06/2025 - 08/2025</h4>
+                    <ul>
+                        <li>Optimized the Hugo RAS robotic arm control algorithms using C++, achieving a 15% reduction in command response latency and improving the stability of surgical tool movements under load, which was validated through internal simulation tests.[cite: 2]</li>
+                        <li>Architected and trained an AI-powered CI/CD-ready tool in Python, integrating GitLab and Medtronic GPT to automate merge request reviews, delivering a functional prototype poised to reduce initial manual review effort by an estimated 25-40% and establishing a new capability for automated code quality assurance.[cite: 2]</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Moffitt Cancer Center</h3>
+                    <h4>Undergraduate Research Assistant | 09/2024 - 05/2025</h4>
+                    <ul>
+                        <li>Developed a custom, multi-step bioinformatics pipeline in R to automate and standardize complex analyses for systems immuno-oncology.[cite: 2]</li>
+                        <li>Automated analysis enabled the identification of conserved inflammatory and senescence-associated response pathways across varying radiation doses and time points.[cite: 2]</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Millennium Corporation</h3>
+                    <h4>Cybersecurity Engineering Intern | 06/2024 - 08/2024</h4>
+                    <ul>
+                        <li>Collaborated with a team of 12 senior cybersecurity analysts to implement advanced penetration testing and red teaming methodologies, identifying and mitigating over 150 critical system vulnerabilities, which reduced the overall system risk profile.[cite: 2]</li>
+                        <li>Utilized tools such as Nmap, Metasploit, and Impacket Python scripts for in-depth reconnaissance, vulnerability assessments, and exploitation activities, increasing threat detection accuracy by 60%.[cite: 2]</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Ombra</h3>
+                    <h4>Software Engineering Intern | 08/2023 - 01/2024</h4>
+                    <ul>
+                        <li>Directed the full-stack development of an Android biometric fingerprint application using MediaPipe and OpenCV, enhancing fingerprint detection accuracy by 15% and securing two government contracts totaling $350K.[cite: 2]</li>
+                        <li>Optimized an SQL database to improve data retrieval speed by 30%, significantly enhancing the application's user experience and contributing to a 20% increase in user engagement.[cite: 2]</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects">
             <h2>Featured Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>SMART Health Dashboard</h3>
-                    <p>Developed an interactive data visualization dashboard utilizing Chart.js to simulate and analyze impact data on functional brain regions.</p>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>NeuroSenseIQ</h3>
+                    <h4>C++, Python, Tensorflow, React.js</h4>
+                    <p>Designed a time-series neural network to analyze pre-processed signals from a simulated patient interface, reducing the time-to-warning for potential nerve fatigue by 30% and improving the detection of subtle anomalies over traditional threshold-based systems by 15%.[cite: 2]</p>
                 </div>
-                <div class="project-card">
-                    <h3>Project Name Two</h3>
-                    <p>Add a brief 1-2 sentence description of another relevant academic or personal software project highlighting the tech stack used.</p>
+                <div class="card">
+                    <h3>ARQuest: Realm Seekers</h3>
+                    <h4>Java, ARCore, Sceneform, Blender</h4>
+                    <p>Developed an immersive augmented reality (AR) game that combines virtual elements with the real world, allowing players to interact with and capture hidden virtual objects in their physical surroundings.[cite: 2]</p>
                 </div>
             </div>
         </section>
@@ -212,9 +275,9 @@
             <h2>Let's Connect</h2>
             <p>I am currently exploring new opportunities in software and ML/AI engineering. Feel free to reach out!</p>
             <p><strong>Location:</strong> Tampa, FL</p>
-            <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+            <p><strong>Email:</strong> <a href="mailto:qndang10@gmail.com">qndang10@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/quynh-nhu-dang/" target="_blank">linkedin.com/in/quynh-nhu-dang</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/quynhnhudang" target="_blank">github.com/quynhnhudang</a></p>
         </section>
     </div>
 
@@ -224,3 +287,5 @@
 
 </body>
 </html>
+
+```
