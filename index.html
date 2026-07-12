@@ -7,10 +7,11 @@
     <style>
         /* Base Styles */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --bg-color: #f8f9fa;
+            /* theme color from image_5833e3.png */
+            --primary-color: #F8B3C3;
+            --secondary-color: #333333; /* For better contrast and readability */
+            --accent-color: #D6A4B8; /* A coordinating accent pink for deeper elements */
+            --bg-color: #FFFFFF; /* Brighter background to pop the pink theme */
             --text-color: #333;
         }
         
@@ -35,26 +36,28 @@
             margin: 0; 
             font-size: 3rem; 
             letter-spacing: 1px;
+            color: var(--secondary-color);
         }
         
         header p { 
             margin: 0.5rem 0 0; 
             font-size: 1.2rem; 
             font-weight: 300; 
-            color: #bdc3c7;
+            color: var(--secondary-color);
         }
 
         nav { 
-            background: var(--secondary-color); 
+            background: #FAFAFA; /* Light nav bar to complement the primary header color */
             text-align: center; 
             padding: 1rem 0; 
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #E0E0E0;
         }
         
         nav a { 
-            color: #fff; 
+            color: var(--primary-color);
             text-decoration: none; 
             margin: 0 1.5rem; 
             font-weight: 500; 
@@ -62,7 +65,7 @@
         }
         
         nav a:hover { 
-            color: var(--accent-color); 
+            color: var(--secondary-color); 
         }
 
         /* Layout & Sections */
@@ -77,13 +80,13 @@
             background: #fff;
             padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
         
         h2 { 
-            border-bottom: 2px solid var(--accent-color); 
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5rem; 
-            color: var(--primary-color); 
+            color: var(--primary-color);
             margin-top: 0;
             display: inline-block;
         }
@@ -97,8 +100,8 @@
         }
         
         .skill-tag { 
-            background: #ecf0f1; 
-            color: var(--primary-color);
+            background: var(--primary-color);
+            color: #FFF;
             padding: 0.5rem 1.2rem; 
             border-radius: 20px; 
             font-weight: 500; 
@@ -123,7 +126,8 @@
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border-color: var(--primary-color);
         }
         
         .project-card h3 {
@@ -131,13 +135,19 @@
             color: var(--primary-color);
         }
 
+        /* Contact Section Details */
+        #contact p strong, #contact a {
+            color: var(--primary-color);
+        }
+
         /* Footer */
         footer { 
-            background: var(--primary-color); 
-            color: #fff; 
+            background: #FAFAFA; 
+            color: var(--primary-color);
             text-align: center; 
             padding: 2rem 0; 
-            margin-top: 2rem; 
+            margin-top: 2rem;
+            border-top: 1px solid #E0E0E0;
         }
 
         footer a {
@@ -202,9 +212,9 @@
             <h2>Let's Connect</h2>
             <p>I am currently exploring new opportunities in software and ML/AI engineering. Feel free to reach out!</p>
             <p><strong>Location:</strong> Tampa, FL</p>
-            <p><strong>Email:</strong> <a href="mailto:qndang10@gmail.com">qndang10@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/quynh-nhu-dang/" target="_blank">linkedin.com/in/quynh-nhu-dang</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/quynhnhudang" target="_blank">https://github.com/quynhnhudang</a></p>
+            <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
         </section>
     </div>
 
