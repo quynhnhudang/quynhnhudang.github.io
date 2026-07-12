@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quynh Nhu Dang | Software Engineer</title>
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base & Theme Styles */
         :root {
             --primary-color: #F8B3C3;
+            --primary-dark: #e89eb0;
             --secondary-color: #333333; 
             --accent-color: #D6A4B8; 
-            --bg-color: #FFFFFF; 
-            --text-color: #333333;
+            --bg-color: #FAFCFF; 
+            --text-color: #4A4A4A;
+            --heading-color: #2C2C2C;
             --card-bg: #FFFFFF;
-            --nav-bg: #FAFAFA;
-            --border-color: #E0E0E0;
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --border-color: #EAEAEA;
+            --shadow-color: rgba(0, 0, 0, 0.06);
         }
 
         [data-theme="dark"] {
             --primary-color: #F8B3C3;
+            --primary-dark: #D6A4B8;
             --secondary-color: #F4F4F4; 
-            --accent-color: #D6A4B8; 
+            --accent-color: #e89eb0; 
             --bg-color: #121212; 
-            --text-color: #E0E0E0;
+            --text-color: #B0B0B0;
+            --heading-color: #E0E0E0;
             --card-bg: #1E1E1E;
-            --nav-bg: #1A1A1A;
+            --nav-bg: rgba(30, 30, 30, 0.85);
             --border-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.3);
         }
         
         html {
@@ -33,77 +41,108 @@
         }
 
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
+            font-family: 'Poppins', sans-serif; 
             margin: 0; 
             padding: 0; 
             color: var(--text-color); 
-            line-height: 1.6; 
+            line-height: 1.7; 
             background-color: var(--bg-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Header & Navigation */
+        h1, h2, h3, h4 {
+            color: var(--heading-color);
+            transition: color 0.4s ease;
+        }
+
+        /* Header & Logo */
         header { 
-            background: var(--primary-color); 
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: #fff; 
-            padding: 5rem 2rem; 
+            padding: 6rem 2rem; 
             text-align: center; 
+            position: relative;
         }
         
+        .profile-logo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            background-color: #fff;
+        }
+
+        .profile-logo:hover {
+            transform: scale(1.05);
+        }
+
         header h1 { 
             margin: 0; 
-            font-size: 3rem; 
-            letter-spacing: 1px;
+            font-size: 3.5rem; 
+            letter-spacing: -0.5px;
             color: #fff;
+            font-weight: 700;
         }
         
         header p { 
             margin: 0.5rem 0 0; 
-            font-size: 1.2rem; 
-            font-weight: 300; 
-            color: #fff;
+            font-size: 1.3rem; 
+            font-weight: 400; 
+            color: rgba(255, 255, 255, 0.9);
         }
 
+        /* Navigation */
         nav { 
             background: var(--nav-bg); 
+            backdrop-filter: blur(12px); /* Glassmorphism effect */
+            -webkit-backdrop-filter: blur(12px);
             text-align: center; 
             padding: 1rem 0; 
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.3s ease;
+            transition: background-color 0.4s ease;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
         
         nav a { 
-            color: var(--text-color);
+            color: var(--heading-color);
             text-decoration: none; 
             font-weight: 500; 
-            transition: color 0.3s ease;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
         
         nav a:hover { 
             color: var(--primary-color); 
+            transform: translateY(-2px);
         }
 
         .theme-btn {
-            background: var(--primary-color);
-            color: #fff;
+            background: var(--heading-color);
+            color: var(--bg-color);
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
         }
 
         .theme-btn:hover {
-            background: var(--accent-color);
+            background: var(--primary-color);
+            color: #fff;
             transform: scale(1.05);
         }
 
@@ -111,32 +150,28 @@
         .container { 
             max-width: 900px; 
             margin: auto; 
-            padding: 3rem 2rem; 
+            padding: 4rem 2rem; 
             overflow: hidden;
         }
         
         section { 
-            margin-bottom: 4rem; 
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-bottom: 5rem; 
         }
         
         h2 { 
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
             padding-bottom: 0.5rem; 
-            color: var(--primary-color);
+            font-size: 2.2rem;
             margin-top: 0;
+            margin-bottom: 2rem;
             display: inline-block;
         }
 
         /* Scroll Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
 
         .reveal.active {
@@ -149,71 +184,94 @@
             display: flex; 
             flex-wrap: wrap; 
             gap: 1rem; 
-            margin-top: 1.5rem;
         }
         
         .skill-tag { 
-            background: var(--primary-color);
-            color: #FFF;
-            padding: 0.5rem 1.2rem; 
-            border-radius: 20px; 
+            background: var(--card-bg);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.6rem 1.4rem; 
+            border-radius: 30px; 
             font-weight: 500; 
-            font-size: 0.9rem;
-            transition: transform 0.2s ease;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px var(--shadow-color);
         }
 
         .skill-tag:hover {
+            background: var(--primary-color);
+            color: #FFF;
             transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(248, 179, 195, 0.3);
         }
 
-        /* Cards for Experience and Projects */
+        /* Cards */
         .grid-container { 
             display: grid; 
             grid-template-columns: 1fr; 
-            gap: 1.5rem; 
-            margin-top: 1.5rem;
+            gap: 2rem; 
         }
         
         .card { 
             background: var(--card-bg); 
             border: 1px solid var(--border-color); 
-            padding: 1.5rem; 
-            border-radius: 8px; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            padding: 2rem; 
+            border-radius: 12px; 
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px var(--shadow-color);
             border-color: var(--primary-color);
         }
         
         .card h3 {
             margin-top: 0;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             color: var(--primary-color);
+            font-size: 1.4rem;
         }
 
         .card h4 {
-            margin: 0 0 1rem 0;
-            font-weight: 400;
-            color: var(--text-color);
+            margin: 0 0 1.2rem 0;
+            font-weight: 500;
+            font-size: 1rem;
             opacity: 0.8;
         }
 
         ul {
             margin: 0;
-            padding-left: 1.5rem;
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
         }
 
         /* Contact Section Details */
-        #contact p strong {
+        #contact {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            text-align: center;
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #contact strong {
             color: var(--primary-color);
         }
         
         #contact a {
-            color: var(--text-color);
+            color: var(--heading-color);
             text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
@@ -226,16 +284,17 @@
             background: var(--nav-bg); 
             color: var(--text-color);
             text-align: center; 
-            padding: 2rem 0; 
-            margin-top: 2rem;
+            padding: 2.5rem 0; 
             border-top: 1px solid var(--border-color);
-            transition: background-color 0.3s ease;
+            transition: background-color 0.4s ease;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
     <header>
+        <img src="image_58a85e.jpg" alt="Quynh Nhu Dang - Profile Art" class="profile-logo">
         <h1>Quynh Nhu Dang</h1>
         <p>Software Engineer</p>
     </header>
@@ -246,7 +305,7 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <button id="theme-toggle" class="theme-btn">🌓 Toggle Theme</button>
+        <button id="theme-toggle" class="theme-btn">🌓 Theme</button>
     </nav>
 
     <div class="container">
@@ -272,7 +331,7 @@
                 <span class="skill-tag">AWS</span>
                 <span class="skill-tag">Git</span>
             </div>
-            <p style="margin-top: 1.5rem; opacity: 0.8;"><strong>Certifications:</strong> CompTIA Security+, CompTIA PenTest+, Scrum.org Professional Scrum Developer I (PSD I), AWS Cloud Practitioner, AWS AI Practitioner, Microsoft Azure AI Fundamentals</p>
+            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.95rem;"><strong>Certifications:</strong> CompTIA Security+, CompTIA PenTest+, Scrum.org Professional Scrum Developer I (PSD I), AWS Cloud Practitioner, AWS AI Practitioner, Microsoft Azure AI Fundamentals</p>
         </section>
 
         <!-- Experience Section -->
@@ -352,7 +411,6 @@
         const toggleBtn = document.getElementById('theme-toggle');
         const currentTheme = localStorage.getItem('theme') || 'light';
         
-        // Apply saved theme on load
         document.documentElement.setAttribute('data-theme', currentTheme);
 
         toggleBtn.addEventListener('click', () => {
@@ -369,7 +427,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 75; // Trigger point
+                var elementVisible = 100;
 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
@@ -377,11 +435,8 @@
             }
         }
 
-        // Add event listener for scroll
         window.addEventListener("scroll", reveal);
-        
-        // Trigger once on load to show elements already in view
-        reveal();
+        reveal(); // Trigger on load
     </script>
 </body>
 </html>
